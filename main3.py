@@ -2,35 +2,29 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
-root.title("form")
-root.geometry("500x500")
-root.config(bg="blue")
+root.geometry("400x300")
+root.title("test it is")
+root.config(bg="purple")
 
-s =[2, 22, 90, 34]
-
-
-def sorting(sequence):
-    lenght= len(sequence)
-
-    if lenght <=1:
-        return sequence
-    else:
-        pivot = sequence.pop()
-    items_greater =[]
-    items_lower =[]
-
-    for i in sequence:
-        if i > pivot:
-            items_greater.append(i)
-        else:
-            items_lower.append(i)
-    return sorting(items_lower) + [pivot] + sorting(items_greater)
+import random
+import string
 
 
-def result():
-    messagebox.showinfo("result", sorting(s))
+def gen():
+ output_string = ''.join(random.SystemRandom().choice(string.ascii_uppercase) for _ in range(6))
+ messagebox.showinfo("generate", output_string)
 
 
-mybtn=Button(root, text="Sorted list", command=result)
-mybtn.place(x=5, y=150)
+def exit_program():
+    root.destroy()
+
+
+
+button_1 = Button(root, text="generate", command=gen)
+button_1.place(x=5, y=10)
+exit_btn = Button(root, text="Exit", borderwidth="10", bg="purple", command=exit_program, fg="white")
+exit_btn.place(x=5, y=100)
+
+
+
 root.mainloop()
